@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI;
 const MONGO_DB_NAME = process.env.MONGO_DB_NAME || "webinars";
 
 interface MongooseCache {
@@ -24,7 +24,9 @@ if (!global.mongooseCache) {
 
 export async function connectDB(): Promise<typeof mongoose> {
   if (!MONGO_URI) {
-    throw new Error("MONGO_URI is not defined in environment variables");
+    throw new Error(
+      "MONGO_URI (or MONGODB_URI) is not defined in environment variables"
+    );
   }
 
   if (cached.conn) {

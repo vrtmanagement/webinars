@@ -5,6 +5,9 @@ import {
   addWebinar,
 } from "@/services/webinarRepository";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
@@ -29,10 +32,9 @@ export async function GET() {
     });
   } catch (error) {
     console.error("GET /api/webinars error:", error);
-    return jsonResponse(
-      { success: false, message: "Failed to fetch webinars" },
-      500
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to fetch webinars";
+    return jsonResponse({ success: false, message }, 500);
   }
 }
 
@@ -79,9 +81,8 @@ export async function POST(request: Request) {
       );
     }
 
-    return jsonResponse(
-      { success: false, message: "Failed to create webinar" },
-      500
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to create webinar";
+    return jsonResponse({ success: false, message }, 500);
   }
 }
