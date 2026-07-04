@@ -7,6 +7,7 @@
 
 import axios from "axios";
 
+
 const WEBINAR_API_URL =
   process.env.NEXT_PUBLIC_WEBINAR_API_URL ??
   "https://webinars.vercel.app/api/webinars";
