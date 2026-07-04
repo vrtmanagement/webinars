@@ -24,7 +24,7 @@ export async function getWebinars(): Promise<Webinar[]> {
 /**
  * Create a webinar.
  * Works from the landing page (same origin) or from an external dashboard
- * when NEXT_PUBLIC_API_URL is set to https://webinars.vercel.app
+ * when NEXT_PUBLIC_API_URL is set to https://webinars-red.vercel.app
  */
 export async function createWebinar(
   payload: CreateWebinarPayload

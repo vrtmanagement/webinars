@@ -3,7 +3,7 @@
  * Use this in your external admin dashboard portal.
  *
  * Local:      http://localhost:3000
- * Production: https://webinars.vercel.app
+ * Production: https://webinars-red.vercel.app
  */
 export const WEBINAR_API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||

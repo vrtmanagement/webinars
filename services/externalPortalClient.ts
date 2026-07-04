@@ -2,7 +2,7 @@
  * Copy this file into your admin dashboard portal project.
  * Install axios: npm install axios
  *
- * Production API: https://webinars.vercel.app/api/webinars
+ * Production API: https://webinars-red.vercel.app/api/webinars
  */
 
 import axios from "axios";
@@ -10,7 +10,7 @@ import axios from "axios";
 
 const WEBINAR_API_URL =
   process.env.NEXT_PUBLIC_WEBINAR_API_URL ??
-  "https://webinars.vercel.app/api/webinars";
+  "https://webinars-red.vercel.app/api/webinars";
 
 export interface WebinarFAQ {
   question: string;
