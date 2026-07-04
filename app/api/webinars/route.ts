@@ -1,0 +1,87 @@
+import { NextResponse } from "next/server";
+import type { CreateWebinarPayload } from "@/types/webinar";
+import {
+  getAllWebinars,
+  addWebinar,
+} from "@/services/webinarRepository";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
+function jsonResponse(body: unknown, status = 200) {
+  return NextResponse.json(body, { status, headers: corsHeaders });
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: corsHeaders });
+}
+
+export async function GET() {
+  try {
+    const webinars = await getAllWebinars();
+    return jsonResponse({
+      success: true,
+      message: "Webinars fetched successfully",
+      data: webinars,
+    });
+  } catch (error) {
+    console.error("GET /api/webinars error:", error);
+    return jsonResponse(
+      { success: false, message: "Failed to fetch webinars" },
+      500
+    );
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body: CreateWebinarPayload = await request.json();
+
+    const required = [
+      "title",
+      "slug",
+      "description",
+      "speakerName",
+      "webinarDate",
+      "webinarTime",
+    ] as const;
+
+    for (const field of required) {
+      if (!body[field]) {
+        return jsonResponse(
+          { success: false, message: `${field} is required` },
+          400
+        );
+      }
+    }
+
+    const webinar = await addWebinar(body);
+
+    return jsonResponse(
+      {
+        success: true,
+        message: "Webinar created successfully",
+        data: webinar,
+      },
+      201
+    );
+  } catch (error: unknown) {
+    console.error("POST /api/webinars error:", error);
+
+    const mongoError = error as { code?: number };
+    if (mongoError?.code === 11000) {
+      return jsonResponse(
+        { success: false, message: "A webinar with this slug already exists" },
+        409
+      );
+    }
+
+    return jsonResponse(
+      { success: false, message: "Failed to create webinar" },
+      500
+    );
+  }
+}
