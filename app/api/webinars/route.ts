@@ -4,14 +4,16 @@ import {
   getAllWebinars,
   addWebinar,
 } from "@/services/webinarRepository";
+import { normalizeWebinarPayload } from "@/utils/normalizeWebinarPayload";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Cache-Control": "no-store, no-cache, must-revalidate",
 };
 
 function jsonResponse(body: unknown, status = 200) {
@@ -40,7 +42,8 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const body: CreateWebinarPayload = await request.json();
+    const raw = await request.json();
+    const body: CreateWebinarPayload = normalizeWebinarPayload(raw);
 
     const required = [
       "title",

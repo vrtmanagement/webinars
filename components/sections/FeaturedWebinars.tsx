@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import type { Webinar } from "@/types/webinar";
 import { useWebinars } from "@/hooks/useWebinars";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,15 +15,24 @@ export function FeaturedWebinars() {
   const { webinars, loading, error, refetch } = useWebinars();
   const [selected, setSelected] = useState<Webinar | null>(null);
 
-  const featured = webinars.filter((w) => w.isFeatured);
+  // Show ALL webinars — featured first, then newest (API returns createdAt desc)
+  const displayed = useMemo(
+    () =>
+      [...webinars].sort((a, b) => {
+        if (a.isFeatured && !b.isFeatured) return -1;
+        if (!a.isFeatured && b.isFeatured) return 1;
+        return 0;
+      }),
+    [webinars]
+  );
 
   return (
     <section id="webinars" className="py-24 lg:py-32 bg-neutral-50/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
-          label="Featured"
-          title="Upcoming Webinars"
-          description="Hand-picked sessions from world-class experts. Register now to secure your spot."
+          label="Webinars"
+          title="All Upcoming Webinars"
+          description="Browse every session — including newly added webinars from our experts. Register now to secure your spot."
         />
 
         <div className="mt-16">
@@ -42,13 +51,13 @@ export function FeaturedWebinars() {
             <ErrorState message={error} onRetry={refetch} />
           )}
 
-          {!loading && !error && featured.length === 0 && (
+          {!loading && !error && displayed.length === 0 && (
             <EmptyState onAction={refetch} />
           )}
 
-          {!loading && !error && featured.length > 0 && (
+          {!loading && !error && displayed.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featured.map((webinar, i) => (
+              {displayed.map((webinar, i) => (
                 <WebinarCard
                   key={webinar.id}
                   webinar={webinar}

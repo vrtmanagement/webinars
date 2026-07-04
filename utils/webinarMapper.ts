@@ -1,5 +1,9 @@
 import type { Webinar } from "@/types/webinar";
 import type { WebinarDocument } from "@/models/Webinar";
+import {
+  DEFAULT_COVER_IMAGE,
+  DEFAULT_SPEAKER_IMAGE,
+} from "@/utils/normalizeWebinarPayload";
 
 export function toWebinar(doc: WebinarDocument): Webinar {
   return {
@@ -7,9 +11,9 @@ export function toWebinar(doc: WebinarDocument): Webinar {
     title: doc.title,
     slug: doc.slug,
     description: doc.description,
-    coverImage: doc.coverImage ?? "",
+    coverImage: doc.coverImage || DEFAULT_COVER_IMAGE,
     speakerName: doc.speakerName,
-    speakerImage: doc.speakerImage ?? "",
+    speakerImage: doc.speakerImage || DEFAULT_SPEAKER_IMAGE,
     speakerDesignation: doc.speakerDesignation ?? "",
     webinarDate: doc.webinarDate,
     webinarTime: doc.webinarTime,

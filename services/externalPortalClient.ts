@@ -71,3 +71,42 @@ export async function getWebinarsFromPortal() {
   }
   return data.data;
 }
+
+export async function getWebinarByIdFromPortal(id: string) {
+  const { data } = await axios.get<ApiResponse<unknown>>(
+    `${WEBINAR_API_URL}/${id}`
+  );
+  if (!data.success || !data.data) {
+    throw new Error(data.message || "Failed to fetch webinar");
+  }
+  return data.data;
+}
+
+export async function updateWebinarFromPortal(
+  id: string,
+  payload: CreateWebinarPayload
+) {
+  const { data } = await axios.put<ApiResponse<unknown>>(
+    `${WEBINAR_API_URL}/${id}`,
+    payload,
+    { headers: { "Content-Type": "application/json" } }
+  );
+
+  if (!data.success) {
+    throw new Error(data.message || "Failed to update webinar");
+  }
+
+  return data.data;
+}
+
+export async function deleteWebinarFromPortal(id: string) {
+  const { data } = await axios.delete<ApiResponse<null>>(
+    `${WEBINAR_API_URL}/${id}`
+  );
+
+  if (!data.success) {
+    throw new Error(data.message || "Failed to delete webinar");
+  }
+
+  return data;
+}
