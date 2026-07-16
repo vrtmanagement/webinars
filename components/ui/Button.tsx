@@ -14,18 +14,17 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:from-indigo-500 hover:to-violet-500",
+    "bg-red-600 text-white shadow-[0_8px_24px_rgba(220,38,38,0.28)] hover:bg-red-700",
   secondary:
-    "bg-white text-foreground border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50 shadow-sm",
-  ghost: "text-muted hover:text-foreground hover:bg-neutral-100",
-  outline:
-    "border border-indigo-200 text-indigo-600 hover:bg-indigo-50",
+    "bg-white text-zinc-900 border border-zinc-200 hover:bg-zinc-50 shadow-sm",
+  ghost: "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100",
+  outline: "border border-red-600/40 text-red-600 hover:bg-red-50",
 };
 
 const sizes = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-2.5 text-sm",
-  lg: "px-8 py-3.5 text-base",
+  sm: "px-5 py-2 text-[15px]",
+  md: "px-6 py-2.5 text-[16px]",
+  lg: "px-8 py-3.5 text-[16px]",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -36,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+          "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
           variants[variant],
           sizes[size],
           className

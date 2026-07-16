@@ -11,7 +11,7 @@ const sizes = { sm: "h-4 w-4", md: "h-8 w-8", lg: "h-12 w-12" };
 export function Spinner({ className, size = "md" }: SpinnerProps) {
   return (
     <Loader2
-      className={cn("animate-spin text-indigo-600", sizes[size], className)}
+      className={cn("animate-spin text-red-600", sizes[size], className)}
       aria-label="Loading"
     />
   );

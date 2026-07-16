@@ -6,32 +6,30 @@ import { Button } from "@/components/ui/Button";
 
 export function CTA() {
   return (
-    <section className="py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="bg-zinc-950 text-white">
+      <div className="relative overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(220,38,38,0.2)_0%,_transparent_55%)]" />
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 px-8 py-16 sm:px-16 sm:py-20 text-center"
+          className="relative mx-auto max-w-4xl px-6 lg:px-8 py-20 sm:py-24 text-center"
         >
-          <div className="absolute inset-0 -z-0">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
-          </div>
-
-          <h2 className="relative text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Ready to Join the Next Webinar?
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight">
+            Ready to Break Through Your Growth Ceiling?
           </h2>
-          <p className="relative mt-4 text-lg text-indigo-100 max-w-xl mx-auto">
-            Register today and start learning from industry experts.
+          <p className="mt-4 text-[16px] sm:text-lg text-zinc-400 max-w-xl mx-auto">
+            Reserve your seat in this month&apos;s complimentary masterclass.
           </p>
           <Button
             size="lg"
-            variant="secondary"
-            className="relative mt-8 bg-white text-indigo-700 hover:bg-indigo-50 border-0 shadow-xl"
-            onClick={() => document.getElementById("webinars")?.scrollIntoView({ behavior: "smooth" })}
+            className="mt-8"
+            onClick={() =>
+              document.getElementById("webinars")?.scrollIntoView({ behavior: "smooth" })
+            }
           >
-            Browse Webinars
+            Register Now
             <ArrowRight className="h-4 w-4" />
           </Button>
         </motion.div>

@@ -24,19 +24,27 @@ export function Accordion({ items }: AccordionProps) {
         return (
           <div
             key={index}
-            className="rounded-2xl border border-neutral-200 bg-white overflow-hidden transition-shadow hover:shadow-md"
+            className={cn(
+              "rounded-2xl border bg-white overflow-hidden transition-all",
+              isOpen
+                ? "border-[#b91c1c]/25 shadow-[0_10px_28px_rgba(26,21,18,0.06)]"
+                : "border-[#e6e0da] hover:border-[#d5cdc4] hover:shadow-sm"
+            )}
           >
             <button
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
             >
-              <span className="font-medium text-foreground">{item.question}</span>
+              <span className="text-[16px] font-semibold text-[#1a1512]">
+                {item.question}
+              </span>
               <motion.span
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.2 }}
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f7f4f1]"
               >
-                <ChevronDown className="h-5 w-5 text-muted shrink-0" />
+                <ChevronDown className="h-4 w-4 text-[#6f6760]" />
               </motion.span>
             </button>
             <AnimatePresence initial={false}>
@@ -47,7 +55,7 @@ export function Accordion({ items }: AccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
-                  <p className={cn("px-6 pb-5 text-muted leading-relaxed")}>
+                  <p className="px-6 pb-5 text-[16px] text-[#6f6760] leading-relaxed">
                     {item.answer}
                   </p>
                 </motion.div>

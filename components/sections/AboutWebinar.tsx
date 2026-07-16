@@ -1,98 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Video,
-  Users,
-  MessageCircle,
-  FolderKanban,
-  PlayCircle,
-  Award,
-  CheckCircle2,
-} from "lucide-react";
+import { Lightbulb, Users2, Rocket } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const features = [
-  { icon: Video, text: "Live interactive sessions with real-time engagement" },
-  { icon: Users, text: "Expert speakers from top companies worldwide" },
-  { icon: MessageCircle, text: "Live Q&A with speakers and panelists" },
-  { icon: FolderKanban, text: "Real-world projects and case studies" },
-  { icon: PlayCircle, text: "Session recordings available after the event" },
-  { icon: Award, text: "Certificates of completion for all attendees" },
+const points = [
+  {
+    icon: Lightbulb,
+    text: "Growth isn’t one magic fix, every stage brings new challenges.",
+  },
+  {
+    icon: Users2,
+    text: "Different leaders need different answers at different times.",
+  },
+  {
+    icon: Rocket,
+    text: "Each month we solve one critical challenge with practical frameworks you can use right away.",
+  },
 ];
 
 export function AboutWebinar() {
   return (
-    <section id="about" className="py-24 lg:py-32">
+    <section id="about" className="section-pad bg-white relative overflow-hidden">
+      <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-red-600/[0.04] blur-3xl pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="relative aspect-square max-w-lg mx-auto">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-100 via-violet-50 to-purple-100" />
-              <div className="absolute inset-4 rounded-2xl bg-white shadow-2xl shadow-indigo-500/10 p-8 flex flex-col justify-center">
-                <div className="space-y-4">
-                  {[Video, Users, MessageCircle, Award].map((Icon, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-neutral-50 hover:bg-indigo-50 transition-colors"
-                    >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-100">
-                        <Icon className="h-5 w-5 text-indigo-600" />
-                      </div>
-                      <div className="h-2 flex-1 rounded-full bg-neutral-200">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
-                          style={{ width: `${70 + i * 7}%` }}
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+        <div className="max-w-2xl">
+          <SectionHeading
+            label="Why We Exist"
+            title="Why These Masterclasses Exist"
+            description="We help entrepreneurs solve one critical growth challenge at a time, with clarity they can act on immediately."
+            align="left"
+          />
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+          {points.map((point, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
+              className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-b from-zinc-50 to-white p-6 shadow-sm hover:border-red-200 hover:shadow-md transition-all"
+            >
+              <span className="absolute top-4 right-5 font-serif text-5xl font-bold text-zinc-100 group-hover:text-red-50 transition-colors select-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="relative mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-red-600 text-white shadow-lg shadow-red-600/20">
+                <point.icon className="h-5 w-5" />
               </div>
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3 }}
-                className="absolute -top-4 -right-4 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-4 text-white shadow-lg"
-              >
-                <Award className="h-6 w-6" />
-              </motion.div>
-            </div>
-          </motion.div>
-
-          <div>
-            <SectionHeading
-              label="About"
-              title="What Are Our Webinars?"
-              description="Our webinars are carefully curated live learning experiences designed to deliver actionable insights from the world's best practitioners."
-              align="left"
-            />
-
-            <ul className="mt-10 space-y-4">
-              {features.map((feature, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="flex items-start gap-3"
-                >
-                  <CheckCircle2 className="h-5 w-5 text-indigo-600 shrink-0 mt-0.5" />
-                  <span className="text-muted leading-relaxed">{feature.text}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+              <p className="relative text-[16px] text-zinc-600 leading-relaxed">
+                {point.text}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

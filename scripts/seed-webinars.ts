@@ -8,7 +8,7 @@ async function seed() {
   if (seeded > 0) {
     console.log(`Seeded ${seeded} webinars into MongoDB.`);
   } else {
-    console.log("Database already has webinars — skipping seed.");
+    console.log("Database already has webinars, skipping seed.");
   }
 }
 
