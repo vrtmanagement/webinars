@@ -1,11 +1,11 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustedCompanies } from "@/components/sections/TrustedCompanies";
-import { AboutWebinar } from "@/components/sections/AboutWebinar";
 import { FeaturedWebinars } from "@/components/sections/FeaturedWebinars";
-import { Timeline } from "@/components/sections/Timeline";
+import { AboutWebinar } from "@/components/sections/AboutWebinar";
+import { WhoShouldAttend } from "@/components/sections/WhoShouldAttend";
+import { Topics } from "@/components/sections/Topics";
 import { WhyAttend } from "@/components/sections/WhyAttend";
-import { Categories } from "@/components/sections/Categories";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { AfterMasterclass } from "@/components/sections/AfterMasterclass";
+import { Philosophy } from "@/components/sections/Philosophy";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 
@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustedCompanies />
-      <AboutWebinar />
       <FeaturedWebinars />
-      <Timeline />
+      <AboutWebinar />
+      <WhoShouldAttend />
+      <Topics />
       <WhyAttend />
-      <Categories />
-      <Testimonials />
+      <AfterMasterclass />
+      <Philosophy />
       <FAQ />
       <CTA />
     </>

@@ -108,20 +108,20 @@ export function WebinarModal({ webinar, onClose }: WebinarModalProps) {
                   { icon: Users, label: "Seats", value: `${webinar.seatsRemaining} left` },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="rounded-xl bg-neutral-50 p-4">
-                    <Icon className="h-4 w-4 text-indigo-600 mb-2" />
+                    <Icon className="h-4 w-4 text-[#c41e1e] mb-2" />
                     <p className="text-xs text-muted">{label}</p>
                     <p className="text-sm font-semibold mt-0.5">{value}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-indigo-50">
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-red-50">
                 <Image
                   src={webinar.speakerImage}
                   alt={webinar.speakerName}
                   width={56}
                   height={56}
-                  className="rounded-full object-cover ring-2 ring-indigo-200"
+                  className="rounded-full object-cover ring-2 ring-red-200"
                 />
                 <div>
                   <p className="font-semibold">{webinar.speakerName}</p>
@@ -132,13 +132,13 @@ export function WebinarModal({ webinar, onClose }: WebinarModalProps) {
               {webinar.agenda.length > 0 && (
                 <div>
                   <h3 className="flex items-center gap-2 font-semibold mb-4">
-                    <ListChecks className="h-5 w-5 text-indigo-600" />
+                    <ListChecks className="h-5 w-5 text-[#c41e1e]" />
                     Agenda
                   </h3>
                   <ol className="space-y-2">
                     {webinar.agenda.map((item, i) => (
                       <li key={i} className="flex gap-3 text-sm text-muted">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-xs font-semibold">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 text-[#c41e1e] text-xs font-semibold">
                           {i + 1}
                         </span>
                         {item}
@@ -154,7 +154,7 @@ export function WebinarModal({ webinar, onClose }: WebinarModalProps) {
                   <ul className="space-y-2">
                     {webinar.requirements.map((req, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-muted">
-                        <CheckCircle2 className="h-4 w-4 text-indigo-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="h-4 w-4 text-[#c41e1e] shrink-0 mt-0.5" />
                         {req}
                       </li>
                     ))}
@@ -179,7 +179,7 @@ export function WebinarModal({ webinar, onClose }: WebinarModalProps) {
               {webinar.faqs.length > 0 && (
                 <div>
                   <h3 className="flex items-center gap-2 font-semibold mb-4">
-                    <HelpCircle className="h-5 w-5 text-indigo-600" />
+                    <HelpCircle className="h-5 w-5 text-[#c41e1e]" />
                     FAQs
                   </h3>
                   <Accordion items={webinar.faqs} />

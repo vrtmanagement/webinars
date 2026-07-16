@@ -1,52 +1,122 @@
 "use client";
 
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+import { cn } from "@/utils/cn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Accordion } from "@/components/ui/Accordion";
 
-const faqItems = [
+interface AccordionItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: AccordionItem[] = [
   {
-    question: "How do I register for a webinar?",
+    question: "How do I register for a masterclass?",
     answer:
-      "Browse our featured webinars, click on any session that interests you, and hit the Register button. You'll receive a confirmation email with the meeting link and calendar invite.",
+      "Browse the upcoming webinars below, choose the session that fits your challenge, and click Register Now. You’ll receive a confirmation email with joining details.",
   },
   {
-    question: "Is it free to attend?",
+    question: "Are these masterclasses really complimentary?",
     answer:
-      "Many of our webinars are completely free. Some premium sessions with extended content or 1-on-1 access may have a fee, clearly displayed on each webinar card.",
+      "Yes. Our monthly executive masterclasses are complimentary and designed exclusively for ambitious business owners and leadership teams.",
   },
   {
-    question: "Will I receive a certificate?",
+    question: "Who hosts the sessions?",
     answer:
-      "Yes! All attendees who participate in a live session receive a verified certificate of completion within 24 hours after the webinar ends.",
+      "Sessions are hosted by Rajesh Tedla, Founder of VRT Management Group, LLC, with frameworks drawn from real executive consulting experience.",
   },
   {
-    question: "Can I watch the recording later?",
+    question: "Do I need to attend every month?",
     answer:
-      "Absolutely. Recordings are available for 30 days after the live session. Registered attendees receive an email with the recording link.",
+      "No. Each session is independent and focused on one growth challenge. Attend the months that match your current priorities.",
   },
   {
-    question: "Will there be live Q&A?",
+    question: "What happens after I attend?",
     answer:
-      "Every webinar includes a dedicated Q&A segment where you can ask questions directly to the speaker. Some sessions also offer extended office hours.",
+      "Qualified participants may be invited to a complimentary 45-minute Executive Growth Strategy Session to assess goals, constraints, and practical next steps.",
   },
   {
-    question: "Can I cancel my registration?",
+    question: "What is VEGA© Premium?",
     answer:
-      "Yes, you can cancel up to 24 hours before the webinar starts. For paid sessions, full refunds are available up to 48 hours before the event.",
+      "VEGA© Premium Growth Accelerator is a selective, year-long implementation and executive mentoring experience for leaders ready to commit beyond learning.",
   },
 ];
 
 export function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <section id="faq" className="py-24 lg:py-32">
+    <section id="faq" className="section-pad bg-zinc-50">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <SectionHeading
-          label="FAQ"
+          label="Questions"
           title="Frequently Asked Questions"
-          description="Everything you need to know about our webinars."
+          description="Everything you need to know about our executive masterclasses."
         />
-        <div className="mt-12">
-          <Accordion items={faqItems} />
+
+        <div className="mt-10 space-y-3">
+          {faqItems.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.04 }}
+                className={cn(
+                  "rounded-2xl border bg-white overflow-hidden transition-all duration-300",
+                  isOpen
+                    ? "border-red-200 shadow-md shadow-red-600/5"
+                    : "border-zinc-200 hover:border-zinc-300"
+                )}
+              >
+                <button
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-[16px] font-semibold text-zinc-900 pr-2">
+                    {item.question}
+                  </span>
+                  <span
+                    className={cn(
+                      "flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors",
+                      isOpen
+                        ? "bg-red-600 text-white"
+                        : "bg-zinc-100 text-zinc-500"
+                    )}
+                  >
+                    {isOpen ? (
+                      <Minus className="h-4 w-4" />
+                    ) : (
+                      <Plus className="h-4 w-4" />
+                    )}
+                  </span>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.22 }}
+                    >
+                      <div className="px-5 pb-5">
+                        <div className="rounded-xl bg-zinc-50 px-4 py-3 border border-zinc-100">
+                          <p className="text-[16px] text-zinc-600 leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

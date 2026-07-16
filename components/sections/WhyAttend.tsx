@@ -2,86 +2,100 @@
 
 import { motion } from "framer-motion";
 import {
-  GraduationCap,
-  Network,
-  MessageSquare,
-  Award,
-  TrendingUp,
-  Lightbulb,
+  Compass,
+  Wrench,
+  Shield,
+  Brain,
+  Sparkles,
+  LineChart,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const reasons = [
+const gains = [
   {
-    icon: GraduationCap,
-    title: "Learn from Experts",
-    description: "Gain insights directly from industry leaders and practitioners at the top of their fields.",
-    gradient: "from-indigo-500 to-violet-600",
+    icon: Compass,
+    title: "Clear strategic direction",
+    description: "Walk away knowing where to focus next, not just inspired.",
   },
   {
-    icon: Network,
-    title: "Networking",
-    description: "Connect with like-minded professionals, founders, and peers from around the world.",
-    gradient: "from-blue-500 to-cyan-600",
+    icon: Wrench,
+    title: "Practical frameworks",
+    description: "Implementation tools you can apply the same week.",
   },
   {
-    icon: MessageSquare,
-    title: "Live Q&A",
-    description: "Ask questions in real-time and get personalized answers from expert speakers.",
-    gradient: "from-emerald-500 to-teal-600",
+    icon: Shield,
+    title: "Leadership tools",
+    description: "Methods to lead people, decisions, and accountability.",
   },
   {
-    icon: Award,
-    title: "Certificates",
-    description: "Earn verified certificates to showcase your continuous learning and professional growth.",
-    gradient: "from-amber-500 to-orange-600",
+    icon: Brain,
+    title: "Better decision-making",
+    description: "Processes that reduce guesswork under pressure.",
   },
   {
-    icon: TrendingUp,
-    title: "Career Growth",
-    description: "Acquire skills and knowledge that directly accelerate your career trajectory.",
-    gradient: "from-pink-500 to-rose-600",
+    icon: Sparkles,
+    title: "Greater confidence",
+    description: "Clarity and conviction for your next business move.",
   },
   {
-    icon: Lightbulb,
-    title: "Latest Industry Trends",
-    description: "Stay ahead with cutting-edge topics, tools, and strategies shaping your industry.",
-    gradient: "from-purple-500 to-indigo-600",
+    icon: LineChart,
+    title: "Executive insights",
+    description: "Lessons drawn from real consulting experience.",
   },
 ];
 
 export function WhyAttend() {
   return (
-    <section className="py-24 lg:py-32 bg-neutral-50/50">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading
-          label="Benefits"
-          title="Why Attend Our Webinars"
-          description="Every session is designed to deliver maximum value for your time and career."
-        />
+    <section className="section-pad bg-white relative overflow-hidden">
+      <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-red-600/40 to-transparent hidden lg:block" />
+      <div className="absolute -right-24 top-1/4 h-80 w-80 rounded-full bg-red-600/[0.04] blur-3xl pointer-events-none" />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, i) => (
-            <motion.div
-              key={reason.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              className="group rounded-2xl border border-neutral-200 bg-white p-6 hover:shadow-xl hover:border-indigo-200 transition-all duration-300"
-            >
-              <div
-                className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${reason.gradient} text-white shadow-lg mb-4 group-hover:scale-110 transition-transform`}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 lg:gap-20 items-start">
+          <div className="lg:sticky lg:top-28">
+            <SectionHeading
+              align="left"
+              label="Outcomes"
+              title="What You'll Gain"
+              description="Leave with more than inspiration, and a clear sense of what to do next."
+            />
+            <div className="mt-8 hidden lg:block h-px w-24 bg-red-600" />
+            <p className="mt-6 hidden lg:block text-[16px] text-zinc-500 leading-relaxed max-w-sm">
+              Six outcomes designed for operators who need clarity they can act
+              on immediately.
+            </p>
+          </div>
+
+          <ol className="relative">
+            <div className="absolute left-[1.15rem] top-3 bottom-3 w-px bg-zinc-200 hidden sm:block" />
+            {gains.map((item, i) => (
+              <motion.li
+                key={item.title}
+                initial={{ opacity: 0, x: 18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.05, duration: 0.45 }}
+                className="group relative grid grid-cols-[auto_1fr] gap-5 sm:gap-7 py-6 sm:py-7 border-b border-zinc-200 last:border-b-0"
               >
-                <reason.icon className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-bold mb-2">{reason.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">
-                {reason.description}
-              </p>
-            </motion.div>
-          ))}
+                <div className="relative z-10 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-zinc-200 bg-white text-[13px] font-semibold tracking-wide text-zinc-500 group-hover:border-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <div className="min-w-0 pt-0.5">
+                  <div className="flex items-start gap-3">
+                    <item.icon className="mt-1 h-4 w-4 shrink-0 text-red-600 opacity-80" />
+                    <div>
+                      <h3 className="font-serif text-xl sm:text-[1.35rem] font-bold text-zinc-900 tracking-tight leading-snug group-hover:text-red-700 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-[16px] text-zinc-500 leading-relaxed max-w-md">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
