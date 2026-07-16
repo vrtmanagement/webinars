@@ -35,13 +35,15 @@ export function AfterMasterclass() {
     <section className="section-pad bg-zinc-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div>
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <SectionHeading
               label="Next Step"
               title="What Happens After the Masterclass?"
               description="Learning creates awareness. Implementation creates results."
+              className="max-w-none"
+              singleLine
             />
-            <p className="mt-5 text-[16px] text-zinc-500 leading-relaxed">
+            <p className="mt-5 text-[16px] text-zinc-500 leading-relaxed max-w-2xl mx-auto">
               Qualified participants may be invited to a complimentary 45-minute
               Executive Growth Strategy Session, focused on your business and
               valuable whether or not you join a program.
@@ -108,14 +110,14 @@ export function AfterMasterclass() {
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mx-auto max-w-3xl text-center"
+            className="mx-auto max-w-4xl text-center"
           >
             <div className="mb-5 inline-flex items-center gap-2 text-[16px] font-medium text-red-600">
               <span className="h-px w-6 bg-red-500" />
               An Invitation, Not a Sales Pitch
               <span className="h-px w-6 bg-red-500" />
             </div>
-            <h3 className="font-serif text-[1.85rem] sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-[1.12] text-zinc-900">
+            <h3 className="font-serif font-bold tracking-tight leading-[1.12] text-zinc-900 whitespace-nowrap text-[clamp(1.15rem,4vw,2.75rem)]">
               The <VegaMark /> Premium Experience
             </h3>
             <p className="mt-5 text-[16px] sm:text-lg text-zinc-600 leading-relaxed max-w-2xl mx-auto">

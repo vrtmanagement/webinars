@@ -4,14 +4,11 @@ interface VegaMarkProps {
   className?: string;
 }
 
-/** Renders VEGA with a matching-size © mark (not ™). */
+/** Renders VEGA with a superscript © mark. */
 export function VegaMark({ className }: VegaMarkProps) {
   return (
     <span className={cn("whitespace-nowrap", className)}>
-      VEGA
-      <span className="ml-0.5 inline-block font-[inherit] text-[1em] leading-none align-baseline">
-        ©
-      </span>
+      VEGA<sup>©</sup>
     </span>
   );
 }

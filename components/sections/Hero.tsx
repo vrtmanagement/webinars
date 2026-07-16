@@ -37,17 +37,17 @@ export function Hero() {
             Every Month, We Solve One of Them. Join Us.
           </p>
 
-          <p className="mt-6 text-[16px] sm:text-lg text-zinc-400 leading-relaxed max-w-3xl">
+          <p className="mt-6 text-[16px] sm:text-lg text-white leading-relaxed max-w-3xl">
             A complimentary masterclass for ambitious owners building companies
             that scale with clarity, stronger leadership, and disciplined
             execution. Each month tackles one growth challenge, and you leave
             with frameworks you can apply immediately.
           </p>
 
-          <p className="mt-8 text-[16px] text-zinc-500">
+          <p className="mt-8 text-[16px] text-white">
             Hosted by{" "}
-            <span className="text-white font-semibold">Rajesh Tedla</span>
-            <span className="text-zinc-600"> · </span>
+            <span className="font-semibold">Rajesh Tedla</span>
+            <span> · </span>
             Founder, VRT Management Group, LLC
           </p>
 
