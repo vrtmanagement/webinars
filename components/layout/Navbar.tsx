@@ -37,9 +37,9 @@ export function Navbar() {
           <Image
             src="/vrt-logo.png"
             alt="VRT Management Group"
-            width={180}
-            height={56}
-            className="h-10 sm:h-11 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-[1.02]"
+            width={260}
+            height={84}
+            className="h-14 sm:h-16 w-auto object-contain mix-blend-multiply transition-transform group-hover:scale-[1.02]"
             priority
           />
         </a>
