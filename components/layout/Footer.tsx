@@ -233,8 +233,8 @@ export function Footer() {
 
         <div className="mt-14 pt-6 border-t border-[#e8e8e8]">
           <p className="text-[16px] text-[#9a9a9a]">
-            © {new Date().getFullYear()} <VegaMark />, Visionary Entrepreneurs
-            Growth Accelerator. All rights reserved.
+            <sup>©</sup> {new Date().getFullYear()} <VegaMark />, Visionary
+            Entrepreneurs Growth Accelerator. All rights reserved.
           </p>
         </div>
       </div>

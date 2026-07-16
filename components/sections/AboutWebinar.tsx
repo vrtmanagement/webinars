@@ -24,12 +24,14 @@ export function AboutWebinar() {
     <section id="about" className="section-pad bg-white relative overflow-hidden">
       <div className="absolute -right-20 top-20 h-72 w-72 rounded-full bg-red-600/[0.04] blur-3xl pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="max-w-2xl">
+        <div className="max-w-4xl">
           <SectionHeading
             label="Why We Exist"
             title="Why These Masterclasses Exist"
             description="We help entrepreneurs solve one critical growth challenge at a time, with clarity they can act on immediately."
             align="left"
+            className="max-w-none"
+            singleLine
           />
         </div>
 
