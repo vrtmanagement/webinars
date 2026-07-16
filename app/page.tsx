@@ -13,13 +13,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedWebinars />
       <AboutWebinar />
       <WhoShouldAttend />
       <Topics />
       <WhyAttend />
-      <AfterMasterclass />
       <Philosophy />
+      <AfterMasterclass />
+      <FeaturedWebinars />
       <FAQ />
       <CTA />
     </>
